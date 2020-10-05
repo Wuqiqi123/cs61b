@@ -1,6 +1,3 @@
-import java.lang.module.FindException;
-import java.time.temporal.Temporal;
-
 public class LinkedListDeque<T> {
 
     private class Node {
@@ -22,6 +19,16 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
+    }
+
+    public LinkedListDeque(LinkedListDeque<T> other){
+        sentinel = new Node(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+        size = 0;
+        for (int i=0; i<other.size(); i++){
+            addLast(other.get(i));
+        }
     }
 
     /** Adds an item of type T to the front of the deque.*/
@@ -91,5 +98,19 @@ public class LinkedListDeque<T> {
             System.out.print(temp.item + " ");
             temp = temp.next;
         }
+    }
+
+    public T getRecursive(int index){
+        if (index >= size){
+            return null;
+        }
+        return getRecursiveHelper(index, sentinel.next);
+    }
+
+    private T getRecursiveHelper(int index, Node start){
+        if (index == 0){
+            return start.item;
+        }
+        return getRecursiveHelper(index-1, start.next);
     }
 }
