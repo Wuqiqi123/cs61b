@@ -92,12 +92,10 @@ public class LinkedListDeque<T> {
     public void printDeque() {
         Node temp  = sentinel.next;
         for(int i =0; i< size; i++) {
-            if (i == size - 1) {
-                System.out.println(temp.item);
-            }
             System.out.print(temp.item + " ");
             temp = temp.next;
         }
+        System.out.println();
     }
 
     public T getRecursive(int index){
