@@ -17,7 +17,7 @@ public class ArrayDeque<T> {
         nextLast = nextFirst + 1;
     }
 
-    public ArrayDeque(LinkedListDeque<T> other){
+    public ArrayDeque(ArrayDeque<T> other){
         int newlength = other.size() * 2;
         items = (T[]) new Object[newlength];
         size = other.size();

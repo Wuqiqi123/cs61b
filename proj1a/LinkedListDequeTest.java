@@ -98,11 +98,43 @@ public class LinkedListDequeTest {
 
 	}
 
+	public static void copyTest() {
+		System.out.println("Running get copy.");
+
+		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+		ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+		// should be empty
+		boolean passed = checkEmpty(true, lld1.isEmpty());
+
+		lld1.addLast(10);
+		ad1.addLast(10);
+
+		lld1.addLast(20);
+		ad1.addLast(20);
+		// should be empty
+		lld1.addLast(30);
+		ad1.addLast(30);
+
+		LinkedListDeque<Integer> lld2 = new LinkedListDeque<Integer>(lld1);
+		ArrayDeque<Integer> ad2 = new ArrayDeque<Integer>(ad1);
+		lld2.printDeque();
+		ad2.printDeque();
+
+		passed = checkValue(lld2.get(0), 10) && checkValue(ad2.get(0), 10) && passed;
+		passed = checkValue(lld2.get(1), 20) && checkValue(ad2.get(1), 20) && passed;
+		passed = checkValue(lld2.get(2), 30) && checkValue(ad2.get(2), 30) && passed;
+
+		passed = checkValue(lld2.getRecursive(0), 10) && passed;
+		passed = checkValue(lld2.getRecursive(1), 20) && passed;
+		passed = checkValue(lld2.getRecursive(2), 30) && passed;
+
+		printTestStatus(passed);
+
+	}
+
 	public static void getTest() {
 
 		System.out.println("Running get test.");
-
-		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
