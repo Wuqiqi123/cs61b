@@ -1,6 +1,8 @@
 package creatures;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import java.awt.geom.FlatteningPathIterator;
 import java.util.HashMap;
 import java.awt.Color;
 import huglife.Direction;
@@ -32,7 +34,10 @@ public class TestPlip {
 
     @Test
     public void testReplicate() {
-        // TODO
+        Plip p = new Plip(1.2);
+        Plip c = p.replicate();
+        assertNotSame(p, c);
+        assertEquals(p.energy(), c.energy(), 0.01);
     }
 
     //@Test
